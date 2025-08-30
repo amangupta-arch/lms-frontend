@@ -1,0 +1,104 @@
+/* e.g., in src/index.css */
+@media (min-width: 768px) {
+  .footer-nav { display: none !important; }
+}
+
+/* Mobile footer: show by default... */
+.footer-nav { display: flex !important; }
+
+/* ...hide on ≥768px (tablets/desktop) */
+@media (min-width: 768px) {
+  .footer-nav { display: none !important; }
+}
+
+/* 1) Load fonts (Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;700&family=Montserrat:wght@500;600;700;800&display=swap');
+
+/* 2) Design tokens */
+:root{
+  --font-heading: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --font-body: "Lato", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+
+  /* sizes via clamp(min, fluid, max) */
+  --fs-h1: clamp(28px, 5vw, 48px);
+  --fs-h2: clamp(24px, 3.4vw, 32px);
+  --fs-h3: clamp(20px, 2.6vw, 28px);
+  --fs-body: clamp(14px, 2vw, 18px);
+  --fs-subtext: clamp(12px, 1.6vw, 14px);
+
+  /* line-heights */
+  --lh-heading: 1.25;   /* 1.2–1.3 */
+  --lh-body: 1.6;       /* 1.5–1.7 */
+
+  /* letter-spacing (tiny tighten on headings helps Montserrat) */
+  --ls-heading: -0.01em;
+}
+
+/* 3) Base reset for consistent typography */
+html { font-size: 100%; }  /* keep rems predictable */
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #111827; /* tailwind gray-900 */
+}
+
+/* 4) Headings = Montserrat everywhere */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+  margin: 0 0 0.5em; /* vertical rhythm */
+  font-weight: 700;
+}
+
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); font-weight: 700; }
+h3 { font-size: var(--fs-h3); font-weight: 600; }
+h4 { font-size: clamp(18px, 2.2vw, 24px); font-weight: 600; }
+h5 { font-size: clamp(16px, 2vw, 20px); font-weight: 600; }
+h6 { font-size: clamp(14px, 1.8vw, 18px); font-weight: 600; }
+
+/* 5) Body text defaults */
+p, li, dd, figcaption {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  margin: 0 0 1em;
+}
+
+/* 6) Subtext utility (captions, meta, disclaimers) */
+.small, small, .subtext, .caption {
+  font-size: var(--fs-subtext);
+  line-height: 1.5;
+  color: #6b7280; /* gray-500 */
+  font-weight: 400;
+}
+
+/* 7) UI elements follow the scale automatically */
+button, input, select, textarea, label {
+  font: inherit;          /* inherits Lato + sizes */
+  line-height: inherit;
+}
+.btn, .button-primary {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 600;
+}
+
+/* 8) Prevent rogue overrides from components/libs */
+*[style*="font-size"] { /* avoid heavy-handed inline overrides where possible */
+  /* leave empty or add rules if you must clamp them */
+}
+
+/* 9) Optional: readable measure for long-form text */
+.prose, .content, article {
+  max-width: 72ch;
+}
+
+/* 10) Dark mode adjustment (optional) */
+@media (prefers-color-scheme: dark) {
+  body { color: #F3F4F6; }
+  .subtext, .caption { color: #9CA3AF; }
+}

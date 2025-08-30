@@ -1,0 +1,107 @@
+/* Header base */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+/* Inner container stretches full width */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+}
+
+/* Logo on the left */
+.logo {
+  font-weight: 800;
+  color: #4f46e5;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+/* Desktop nav */
+.nav-desktop {
+  display: none;
+  flex: 1; /* take full remaining space */
+  justify-content: space-evenly; /* spread items evenly */
+  align-items: center;
+}
+
+/* Menu links */
+.header-link {
+  font-size: 25px;
+  color: #4b5563; /* grey */
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.header-link:hover {
+  background: #e5e7eb; /* light grey background */
+  color: #000; /* black text */
+}
+
+.header-link-active {
+  color: #000; /* active = black text */
+  font-weight: 700;
+}
+
+/* Logout button styled like links */
+.logout-btn {
+  font-size: 25px;
+  color: #4b5563;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.logout-btn:hover {
+  background: #e5e7eb;
+  color: #000;
+}
+
+/* Hamburger for mobile */
+.hamburger {
+  font-size: 22px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+/* Mobile drawer */
+.nav-mobile {
+  display: grid;
+  gap: 8px;
+  padding: 8px 16px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.logout-btn-mobile {
+  font-size: 22px;
+  justify-self: start;
+  color: #4b5563;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.logout-btn-mobile:hover {
+  background: #e5e7eb;
+  color: #000;
+}
+
+/* Desktop breakpoint */
+@media (min-width: 768px) {
+  .nav-desktop { display: flex; }
+  .hamburger { display: none; }
+  .nav-mobile { display: none; }
+}
