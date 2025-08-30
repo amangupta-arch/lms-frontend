@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate, useLocation, Outlet } from "react-router-dom";
 import { supabase } from "./supabaseClient";
-import { Analytics } from "@vercel/analytics/next";
 import { LocaleProvider } from "./locale/LocaleProvider";
 import Header from "./components/Header";
 import LanguageBar from "./components/LanguageBar";
