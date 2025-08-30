@@ -1,0 +1,310 @@
+/* container */
+.cc {
+  position: relative;
+  margin-top: 12px;
+  overflow: hidden;          /* ⬅️ prevents page-level horizontal scroll */
+  max-width: 100%;
+  contain: content;
+}
+
+/* header */
+.cc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+  padding-inline: 0;
+}
+
+.cc-title {
+  margin: 0;
+}
+
+.cc-cta {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #111827;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+/* track */
+.cc-track {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 6px 8px;        /* ⬅️ keeps edges inside, no overflow */
+  max-width: 100vw;          /* ⬅️ hard cap */
+}
+
+/* card */
+.cc-card {
+  flex: 0 0 calc(50% - 6px); /* 2 cards in view on mobile */
+  scroll-snap-align: start;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  overflow: hidden;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .cc-card { flex-basis: calc(33.333% - 8px); }
+}
+@media (min-width: 1024px) {
+  .cc-card { flex-basis: calc(25% - 9px); }
+}
+
+/* image */
+.cc-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  overflow: hidden;
+}
+.cc-img--has { background: #000; }
+.cc-img--placeholder {
+  background: linear-gradient(135deg, #e5e7eb, #f3f4f6);
+}
+.cc-img-el {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.cc-img-ph {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* body */
+.cc-card-body {
+  padding: 12px;
+  display: grid;
+  gap: 6px;
+}
+.cc-card-title {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+/* progress */
+.cc-pct {
+  min-width: 48px;
+  text-align: right;
+  font-weight: 700;
+  font-size: 16px;
+  color: #111827;
+}
+.cc-pct--done { color: #16a34a; }
+
+.cc-desc {
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-top: 6px;
+}
+
+.cc-bar {
+  height: 8px;
+  background: #f3f4f6;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.cc-bar-fill {
+  height: 100%;
+  background: #111827;
+  transition: width .3s ease;
+}
+
+.cc-lessons {
+  color: #6b7280;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+/* nice-to-haves, not required */
+.cc-loading { padding: 16px; }
+.cc-empty { padding: 16px; color: #6b7280; }
+
+/* optional: hide scrollbar without affecting layout */
+.cc-track::-webkit-scrollbar { height: 0; }
+
+
+ /* 1) Make thumbnail square on all screens */
+.cc-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;   /* ⬅️ square */
+  display: block;
+  overflow: hidden;
+}
+
+/* 2) Row for lessons (left) + percent (right) */
+.cc-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* lessons left, % right */
+  margin-top: 4px;
+}
+
+/* 3) Progress colors: light grey background; dark grey for in-progress; calm green when done */
+.cc-bar {
+  height: 8px;
+  background: #f3f4f6; /* light grey unfilled */
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+/* in-progress fill (dark grey) */
+.cc-bar-fill {
+  height: 100%;
+  background: #374151;            /* dark grey */
+  transition: width .3s ease;
+}
+
+/* full (100%) fill (calmer green) */
+.cc-bar-fill--done {
+  background: #16a34a;            /* emerald-700: calmer, not neon */
+}
+
+/* percent text color also calms when done (optional) */
+.cc-pct { 
+  min-width: 48px;
+  text-align: right;
+  font-weight: 700;
+  font-size: 16px;
+  color: #111827;
+}
+.cc-pct--done { color: #15803d; }  /* emerald-800 */
+
+
+/* Image stays square */
+.cc-img { aspect-ratio: 1 / 1; }
+
+/* Make the card a vertical stack: image on top, body below */
+.cc-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Body fills remaining space so we can pin meta to the bottom */
+.cc-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;          /* you already had a gap; keep it */
+  padding: 12px;     /* already present via class */
+  flex: 1;           /* let body grow so meta can sit at bottom */
+}
+
+/* Bottom row: lessons (left) + percent (right) pinned to bottom */
+.cc-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;  /* pushes this row to the bottom of the card body */
+}
+
+/* Progress bar colors (as set earlier) */
+.cc-bar {
+  height: 8px;
+  background: #f3f4f6;     /* unfilled: light grey */
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.cc-bar-fill {
+  height: 100%;
+  background: #374151;     /* in-progress: dark grey */
+  transition: width .3s ease;
+}
+.cc-bar-fill--done {
+  background: #16a34a;     /* calm green */
+}
+
+/* Keep image square */
+.cc-img { aspect-ratio: 1 / 1; }
+
+/* Card = column; body = 3-row grid (top grows, bar + meta fixed at bottom) */
+.cc-card { display: flex; flex-direction: column; }
+.cc-card-body {
+  display: grid;
+  grid-template-rows: 1fr auto auto; /* top | progress bar | meta */
+  gap: 6px;
+  padding: 12px;
+  flex: 1;
+}
+
+/* Top block grows; clamp text so it never pushes bar down */
+.cc-top { min-width: 0; } /* allow clamping */
+.cc-card-title {
+  margin: 0;
+  font-size: 16px;       /* tweak as you like */
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* clamp to 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.cc-desc {
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* optional: clamp to 1 line so height is consistent */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Progress bar (always second from bottom) */
+.cc-bar {
+  height: 8px;
+  background: #f3f4f6;   /* unfilled: light grey */
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.cc-bar-fill {
+  height: 100%;
+  background: #374151;   /* in-progress: dark grey */
+  transition: width .3s ease;
+}
+.cc-bar-fill--done {
+  background: #16a34a;   /* calm green (not neon) */
+}
+
+/* Bottom row: lessons (left) + percent (right), fixed at the bottom */
+.cc-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.cc-pct { 
+  min-width: 48px;
+  text-align: right;
+  font-weight: 700;
+  font-size: 16px;
+  color: #111827;
+}
+.cc-pct--done { color: #15803d; }

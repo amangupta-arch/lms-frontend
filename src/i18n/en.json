@@ -1,0 +1,14 @@
+{
+  "nav": { "home": "Home", "guides": "Guides", "challenges": "Challenges", "ai": "Use AI", "logout": "Log out" },
+  "courses": { "available": "Available Courses" },
+  "course": { "backToCourses": "← Back to courses", "lessons": "Lessons", "notFound": "Course not found." },
+  "lesson": {
+    "accessDeniedTitle": "🚫 Access denied",
+    "accessDeniedBody": "You don’t have access to this course’s lessons.",
+    "loading": "Loading…",
+    "noContent": "No content available for this lesson yet.",
+    "back": "Back",
+    "next": "Next",
+    "finish": "Finish & Back to Course"
+  }
+}
