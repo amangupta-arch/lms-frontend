@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/lms-frontend/static/css/main.2d2757f0.css",
+    "main.js": "/lms-frontend/static/js/main.1cb36469.js",
+    "index.html": "/lms-frontend/index.html",
+    "main.2d2757f0.css.map": "/lms-frontend/static/css/main.2d2757f0.css.map",
+    "main.1cb36469.js.map": "/lms-frontend/static/js/main.1cb36469.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2d2757f0.css",
+    "static/js/main.1cb36469.js"
+  ]
+}
